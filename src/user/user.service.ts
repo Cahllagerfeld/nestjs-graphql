@@ -17,9 +17,14 @@ export class UserService {
       avatarUrl: userDto.avatarUrl,
       bio: userDto.bio,
       firstName: userDto.firstName,
-      secondName: userDto.firstName,
+      secondName: userDto.secondName,
     };
     this.userCollection = [...this.userCollection, newUser];
     return newUser;
+  }
+
+  public async delete(id: string): Promise<boolean> {
+    this.userCollection = this.userCollection.filter((el) => el.id !== id);
+    return true;
   }
 }
